@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "110756258317",
+    "project_id": "discover-86019",
+    "storage_bucket": "discover-86019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110756258317:android:9d5095d34fd3602ea22b44",
+        "android_client_info": {
+          "package_name": "com.travel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110756258317-gqjrb4u4sritq512edhl6vr4ti41jlli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWfEuiPqfXZoVJB_z3UChKeyqK_ou6SMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110756258317-gqjrb4u4sritq512edhl6vr4ti41jlli.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "110756258317-57adcqvmoiqv6tun4nrroff1eeebk0gr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.travel.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
