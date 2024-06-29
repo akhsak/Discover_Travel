@@ -119,8 +119,14 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<UserCredential> signupUser(String email, String password) async {
-    return await authService.signUpWithEmail(email: email, password: password);
+  Future<UserCredential> signupUser(String email, String password, String age,
+      String phoneNumber, String userName) async {
+    return await authService.signUpWithEmail(
+        email: email,
+        password: password,
+        age: age,
+        userName: userName,
+        phoneNumber: phoneNumber);
   }
 
   Future<UserCredential> loginWithEmail(String email, String password) async {
@@ -203,7 +209,7 @@ class LoginProvider extends ChangeNotifier {
   adminKey(context, SnackBarWidget snackBarWidget, {String? message}) async {
     try {
       if (loginEmailController.text == 'discover@gmail.com' &&
-          loginPasswordController.text == '12345') {
+          loginPasswordController.text == '123') {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const AdminBottomBar()),

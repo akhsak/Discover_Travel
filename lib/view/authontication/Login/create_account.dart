@@ -197,7 +197,10 @@ class CreateAccount extends StatelessWidget {
                           try {
                             await createprovider.signupUser(
                                 createprovider.createEmailController.text,
-                                createprovider.createPasswordController.text);
+                                createprovider.createPasswordController.text,
+                                createprovider.phoneController.text,
+                                createprovider.createAgeController.text,
+                                createprovider.userNameController.text);
 
                             Navigator.pushReplacement(
                                 context,

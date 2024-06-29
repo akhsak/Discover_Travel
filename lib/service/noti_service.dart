@@ -81,8 +81,8 @@ class NotificationService {
       String userId = userDoc.id;
       NotificationModel notification = NotificationModel(
         recieverId: userId,
-        title: 'New Doctor Appointed',
-        body: 'Dr.$locationName is appointed for $place',
+        title: 'New Package Added ',
+        body: 'location.$locationName and place $place',
       );
       await addNotification(notification);
     }
@@ -94,7 +94,7 @@ class NotificationService {
       data.id = docRef.id;
       await docRef.set(data);
     } catch (error) {
-      log('Error during adding appointment: $error');
+      log('Error during adding package: $error');
       rethrow;
     }
   }
