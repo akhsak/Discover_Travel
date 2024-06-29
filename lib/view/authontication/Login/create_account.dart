@@ -12,7 +12,7 @@ import 'package:travel/widgets/snackbar.dart';
 class CreateAccount extends StatelessWidget {
   // bool isLoading = false;
 
-  CreateAccount({super.key});
+  const CreateAccount({super.key});
 
   //final formKey = GlobalKey<FormState>();
 
@@ -31,21 +31,21 @@ class CreateAccount extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Create Account',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
-                Text(
+                const Text(
                   'Get the best out of derleng by creating an account',
                   style: TextStyle(color: Colors.grey),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: createprovider.userNameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Full name',
                     border: OutlineInputBorder(),
                   ),
@@ -56,21 +56,23 @@ class CreateAccount extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 100,
                       child: Consumer<LoginProvider>(
                         builder: (context, value, child) => TextFormField(
                           decoration: InputDecoration(
                             prefixIcon: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12),
                               child: InkWell(
                                 onTap: () {
                                   showCountryPicker(
                                     context: context,
-                                    countryListTheme: CountryListThemeData(
+                                    countryListTheme:
+                                        const CountryListThemeData(
                                       bottomSheetHeight: 500,
                                     ),
                                     onSelect: (value) {
@@ -82,14 +84,14 @@ class CreateAccount extends StatelessWidget {
                                   children: [
                                     Text(
                                       value.selectCountry.flagEmoji,
-                                      style: TextStyle(fontSize: 20),
+                                      style: const TextStyle(fontSize: 20),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "+${value.selectCountry.phoneCode}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     )
@@ -97,17 +99,17 @@ class CreateAccount extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            border: OutlineInputBorder(),
+                            border: const OutlineInputBorder(),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
                         controller: createprovider.phoneController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Phone',
                           border: OutlineInputBorder(),
                         ),
@@ -123,12 +125,12 @@ class CreateAccount extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFormField(
                   keyboardType: TextInputType.number,
                   maxLength: 2,
                   controller: createprovider.createAgeController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Age',
                     border: OutlineInputBorder(),
                   ),
@@ -139,11 +141,11 @@ class CreateAccount extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   controller: createprovider.createEmailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     labelText: 'Email',
                     border: OutlineInputBorder(),
@@ -158,7 +160,7 @@ class CreateAccount extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Consumer<LoginProvider>(
                   builder: (context, value, child) => TextFormField(
                     controller: createprovider.createPasswordController,
@@ -166,7 +168,7 @@ class CreateAccount extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
                       labelText: 'Password',
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       suffixIcon: IconButton(
                         icon: Icon(
                           value.createObscureText
@@ -186,7 +188,7 @@ class CreateAccount extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Center(
                   child: SizedBox(
                     width: 350,
@@ -205,7 +207,8 @@ class CreateAccount extends StatelessWidget {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SuccessAccount()));
+                                    builder: (context) =>
+                                        const SuccessAccount()));
 
                             createprovider.clearSignupControllers();
                             SnackBarWidget().showSuccessSnackbar(
@@ -218,33 +221,33 @@ class CreateAccount extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Create Account',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 80),
                   child: Row(
                     children: [
-                      Text("Already have an account?"),
+                      const Text("Already have an account?"),
                       TextButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()));
+                                    builder: (context) => const LoginScreen()));
                           },
-                          child: Text(
+                          child: const Text(
                             'sign in',
                             style: TextStyle(color: Colors.black),
                           ))
