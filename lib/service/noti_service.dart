@@ -1,10 +1,8 @@
 import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:travel/model/notification_model.dart';
-import 'package:travel/model/user_model.dart';
 
 class NotificationService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -12,56 +10,62 @@ class NotificationService {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   late CollectionReference<NotificationModel> notification;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
   final FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('logo');
+        const AndroidInitializationSettings('medheal');
 
-    var initializationSettingsIOS = DarwinInitializationSettings(
-        requestAlertPermission: true,
-        requestBadgePermission: true,
-        requestSoundPermission: true,
-        onDidReceiveLocalNotification:
-            (int id, String? title, String? body, String? payload) async {});
+    var initializationSettingsIOS = const DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
 
     var initializationSettings = InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-    await notificationsPlugin.initialize(initializationSettings,
-        onDidReceiveNotificationResponse:
-            (NotificationResponse notificationResponse) async {});
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+    );
+
+    notificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse:
+          (NotificationResponse notificationResponse) async {},
+    );
   }
 
-  notificationDetails() {
+  NotificationDetails notificationDetails() {
     return const NotificationDetails(
-        android: AndroidNotificationDetails('channelId', 'channelName',
-            importance: Importance.max),
-        iOS: DarwinNotificationDetails());
+      android: AndroidNotificationDetails(
+        'channelId',
+        'channelName',
+        importance: Importance.max,
+      ),
+      iOS: DarwinNotificationDetails(),
+    );
   }
 
-  Future showNotification(
-      {int id = 0, String? title, String? body, String? payLoad}) async {
-    return notificationsPlugin.show(
-        id, title, body, await notificationDetails());
-  }
-
-  Future<void> sendNotificationToAllUsers(
-      String title, String body, List<UserModel> users) async {
-    for (var user in users) {
-      await showNotification(
-        title: title,
-        body: body,
-        id: users.indexOf(user),
-      );
-    }
+  Future<void> showNotification({
+    int id = 0,
+    String? title,
+    String? body,
+    String? payload,
+  }) async {
+    await notificationsPlugin.show(
+      id,
+      title,
+      body,
+      notificationDetails(),
+      payload: payload,
+    );
   }
 
   NotificationService() {
     notification = firebaseFirestore
         .collection(notifications)
         .withConverter<NotificationModel>(fromFirestore: (snapshot, options) {
-      log('collection creation');
       return NotificationModel.fromJson(snapshot.id, snapshot.data()!);
     }, toFirestore: (value, options) {
       return value.toJson();
@@ -69,8 +73,8 @@ class NotificationService {
   }
 
   Future<void> notifyAllUsers({
-    required String placeName,
-    required String location,
+    required String locationName,
+    required String place,
   }) async {
     final usersSnapshot = await firebaseFirestore.collection('user').get();
     for (var userDoc in usersSnapshot.docs) {
@@ -78,7 +82,7 @@ class NotificationService {
       NotificationModel notification = NotificationModel(
         recieverId: userId,
         title: 'New Doctor Appointed',
-        body: '$placeName New product ha been arrived $location',
+        body: 'Dr.$locationName is appointed for $place',
       );
       await addNotification(notification);
     }
@@ -90,7 +94,7 @@ class NotificationService {
       data.id = docRef.id;
       await docRef.set(data);
     } catch (error) {
-      log('Error during adding product: $error');
+      log('Error during adding appointment: $error');
       rethrow;
     }
   }

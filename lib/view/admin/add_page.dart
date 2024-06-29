@@ -140,13 +140,15 @@ class AdminAddpage extends StatelessWidget {
                           await Provider.of<NotificationProvider>(context,
                                   listen: false)
                               .addNotification(
+                                  locationName:
+                                      addProvider.locationController.text,
                                   placeName:
-                                      addProvider.placeNameController.text,
-                                  location:
-                                      addProvider.locationController.text);
-                          if (Navigator.canPop(context)) {
-                            Navigator.pop(context);
-                          }
+                                      addProvider.placeNameController.text);
+                          addProvider.clearTravelControllers;
+                          log('worked');
+                          // if (Navigator.canPop(context)) {
+                          //   Navigator.pop(context);
+                          // }
                           SnackBarWidget().showSuccessSnackbar(
                               context, 'Package Added Successfully');
                         }
@@ -182,8 +184,6 @@ class AdminAddpage extends StatelessWidget {
       );
 
       getprovider.addTravelPackage(travel);
-
-      getprovider.clearTravelControllers();
 
       SnackBarWidget()
           .showSuccessSnackbar(context, 'Travel Package Added Successfully');

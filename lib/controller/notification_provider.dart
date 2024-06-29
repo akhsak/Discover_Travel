@@ -9,7 +9,7 @@ class NotificationProvider extends ChangeNotifier {
   String appointments = 'notification';
   List<NotificationModel> allNotification = [];
   User? user = FirebaseAuth.instance.currentUser;
-  late CollectionReference<NotificationModel> product;
+  late CollectionReference<NotificationModel> appointment;
   NotificationService notificationService = NotificationService();
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
@@ -51,14 +51,14 @@ class NotificationProvider extends ChangeNotifier {
   }
 
   Future<void> addNotification({
-    required String location,
     required String placeName,
+    required String locationName,
   }) async {
     setLoading(true);
     try {
       await notificationService.notifyAllUsers(
-        placeName: placeName,
-        location: location,
+        locationName: locationName,
+        place: placeName,
       );
       getAllNotification();
     } catch (error) {

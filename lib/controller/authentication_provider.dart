@@ -120,7 +120,7 @@ class LoginProvider extends ChangeNotifier {
   }
 
   Future<UserCredential> signupUser(String email, String password) async {
-    return await authService.signUpWithEmail(email, password);
+    return await authService.signUpWithEmail(email: email, password: password);
   }
 
   Future<UserCredential> loginWithEmail(String email, String password) async {
@@ -165,8 +165,8 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getOtp(context, phoneCon) async {
-    await authService.getOtp(context, phoneCon);
+  Future<void> getOtp(phoneCon) async {
+    await authService.getOtp(phoneCon);
     notifyListeners();
   }
 
