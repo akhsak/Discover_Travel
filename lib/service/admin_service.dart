@@ -19,7 +19,7 @@ class TravelService {
     travel = firebaseFirestore
         .collection(travelPackages)
         .withConverter<AdminModel>(fromFirestore: (snapshot, options) {
-      return AdminModel.fromJson(snapshot.id, snapshot.data()!);
+      return AdminModel.fromJson(snapshot.data()!);
     }, toFirestore: (value, options) {
       return value.toJson();
     });

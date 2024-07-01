@@ -11,7 +11,7 @@ class AdminModel {
   AdminModel({
     this.id,
     this.image,
-    required this.placeName,
+    this.placeName,
     this.location,
     this.duration,
     this.transportation,
@@ -19,18 +19,18 @@ class AdminModel {
     this.wishList,
   });
 
-  factory AdminModel.fromJson(String id, Map<String, dynamic> json) {
+  factory AdminModel.fromJson(Map<String, dynamic> json) {
     return AdminModel(
-        id: id,
+        id: json['id'],
         image: json['image'],
         // (json['image'] as List<dynamic>?)
         //     ?.map((item) => item as String)
         //     .toList(),
-        placeName: json['fullName'] as String?,
-        duration: json['duration'] as String?,
-        transportation: json['transportation'] as String?,
-        location: json['location'] as String?,
-        aboutTrip: json['aboutTrip'] as String?,
+        placeName: json['fullName'],
+        duration: json['duration'],
+        transportation: json['transportation'],
+        location: json['location'],
+        aboutTrip: json['aboutTrip'],
         wishList: List<String>.from(json['wishlist']));
     // (json['wishlist'] as List<dynamic>?)
     //     ?.map((item) => item as String)

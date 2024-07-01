@@ -67,6 +67,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:travel/model/admin_model.dart';
 import 'package:travel/model/booking_model.dart';
 import 'package:travel/model/review.model.dart';
 import 'package:travel/model/user_model.dart';
@@ -248,6 +249,46 @@ class BookingPageService {
           .toList();
     } catch (e) {
       throw 'Error in get my reviews: $e';
+    }
+  }
+
+  Future<void> updateIsOrder(
+    String id,
+  ) async {
+    try {
+      await bookings.doc(id).update({});
+    } catch (e) {
+      throw Exception("Error updating isOrder: $e");
+    }
+  }
+
+  Future<void> addBokings(AdminModel booked, String bookedId) async {
+    try {
+      final bookedCollection = bookings
+          .doc(bookedId)
+          .collection("booked")
+          .withConverter<AdminModel>(
+              fromFirestore: (snapshots, _) =>
+                  AdminModel.fromJson(snapshots.data()!),
+              toFirestore: (booked, _) => booked.toJson());
+      await bookedCollection.doc(booked.id).set(booked);
+    } catch (e) {
+      throw Exception("eror adding:$e");
+    }
+  }
+
+  Future<List<AdminModel>> getOrders(String cartId) async {
+    try {
+      final orderCollection =
+          bookings.doc(cartId).collection('orders').withConverter<AdminModel>(
+                fromFirestore: (snapshots, _) =>
+                    AdminModel.fromJson(snapshots.data()!),
+                toFirestore: (order, _) => order.toJson(),
+              );
+      final snapshot = await orderCollection.get();
+      return snapshot.docs.map((doc) => doc.data()).toList();
+    } catch (e) {
+      throw Exception("Error fetching orders: $e");
     }
   }
 }

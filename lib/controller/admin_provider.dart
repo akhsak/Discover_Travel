@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:travel/model/admin_model.dart';
 import 'package:travel/service/admin_service.dart';
+import 'package:travel/service/booking_service.dart';
 import 'package:travel/service/noti_service.dart';
 
 class AdminProvider extends ChangeNotifier {
@@ -31,8 +32,11 @@ class AdminProvider extends ChangeNotifier {
   final TextEditingController transportationController =
       TextEditingController();
   NotificationService notificationService = NotificationService();
+  final BookingPageService bookingPageService = BookingPageService();
   List<AdminModel> searchList = [];
   List<AdminModel> allTravelList = [];
+  List<AdminModel> allbookinglist = [];
+  List<AdminModel> allbooking = [];
 
   void setIsAddingData(bool value) {
     isAddingData = value;
@@ -140,5 +144,18 @@ class AdminProvider extends ChangeNotifier {
     } else {
       return true;
     }
+  }
+
+  void addOrder(AdminModel booked) {
+    allbookinglist.add(booked);
+    notifyListeners();
+  }
+
+  List<AdminModel> getOrders() {
+    return allbookinglist;
+  }
+
+  Future<void> updateCart({id}) async {
+    await bookingPageService.updateIsOrder(id);
   }
 }

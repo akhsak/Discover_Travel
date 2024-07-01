@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:travel/controller/admin_provider.dart';
 import 'package:travel/main.dart';
 import 'package:travel/view/user/booking/my_booking.dart';
 
@@ -41,6 +43,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
       msg: 'Payment Success: ${response.paymentId}',
       toastLength: Toast.LENGTH_SHORT,
     );
+
+    var cartProvider = Provider.of<AdminProvider>(context, listen: false);
+    for (var item in cartProvider.allbooking) {
+      cartProvider.addOrder(
+        item,
+      );
+      cartProvider.updateCart(id: item.id);
+    }
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'your_channel_id',
@@ -59,10 +69,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
       platformChannelSpecifics,
       payload: 'item x',
     );
-    Navigator.pushAndRemoveUntil(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const MyBooking()),
-      (Route<dynamic> route) => false,
     );
   }
 
@@ -102,11 +111,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 var options = {
                   "key": "rzp_test_CYrnTOG3W2cDCB",
                   "amount": num.parse(amountController.text) * 100,
-                  "name": "Rexparts",
+                  "name": "Discover",
                   "description": "payment for our product",
                   "prefill": {
                     "contact": "8590314865",
-                    "email": "rexparts@gmail.com",
+                    "email": "discover@gmail.com",
                   },
                   "external": {
                     "wallet": ["paytm"]

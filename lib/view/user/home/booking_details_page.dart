@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel/controller/admin_provider.dart';
+import 'package:travel/model/admin_model.dart';
 import 'package:travel/view/user/booking/widget/reviewsection_widget.dart';
 import 'package:travel/view/user/home/detail_booking_page.dart';
 
 class BookingDetailPage extends StatelessWidget {
-  final String placeName;
-  final String aboutTrip;
-  final String location;
-  final ImageProvider image;
-  final String duration;
-  final String transportation;
-  final String tripId;
-  final bool isAdmin;
+  final AdminModel? allbooking;
+  final String? placeName;
+
+  final String? aboutTrip;
+  final String? location;
+  final ImageProvider? image;
+  final String? duration;
+  final String? transportation;
+  final String? tripId;
+  final bool? isAdmin;
 
   const BookingDetailPage({
     super.key,
-    required this.placeName,
-    required this.aboutTrip,
-    required this.location,
-    required this.image,
-    required this.duration,
-    required this.transportation,
-    required this.tripId,
-    required this.isAdmin,
+    this.allbooking,
+    this.placeName,
+    this.aboutTrip,
+    this.location,
+    this.image,
+    this.duration,
+    this.transportation,
+    this.tripId,
+    this.isAdmin,
   });
 
   @override
@@ -43,7 +47,7 @@ class BookingDetailPage extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        actions: isAdmin
+        actions: isAdmin!
             ? [
                 IconButton(
                   onPressed: () {
@@ -60,7 +64,7 @@ class BookingDetailPage extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
-                              adminProvider.deleteTravelPackage(tripId);
+                              adminProvider.deleteTravelPackage(tripId!);
                               Navigator.pop(context);
                               Navigator.pop(
                                   context); // Go back to the previous screen
@@ -90,7 +94,7 @@ class BookingDetailPage extends StatelessWidget {
                   width: size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: image,
+                      image: image!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -102,7 +106,7 @@ class BookingDetailPage extends StatelessWidget {
                     color: Colors.black54,
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      placeName,
+                      placeName!,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -125,7 +129,7 @@ class BookingDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       travelDetailsText(
-                        value: aboutTrip,
+                        value: aboutTrip!,
                         color: const Color.fromARGB(255, 7, 7, 7),
                         fontsize: 15,
                         fontWeight: FontWeight.normal,
@@ -194,7 +198,7 @@ class BookingDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        placeName,
+                        placeName!,
                         style: const TextStyle(color: Colors.grey),
                       ),
                       const SizedBox(height: 10),
@@ -204,7 +208,7 @@ class BookingDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        location,
+                        location!,
                         style: const TextStyle(fontSize: 16),
                       ),
                       const SizedBox(height: 20),
