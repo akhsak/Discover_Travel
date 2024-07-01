@@ -4,7 +4,7 @@ import 'package:travel/controller/admin_provider.dart';
 import 'package:travel/view/user/booking/widget/reviewsection_widget.dart';
 import 'package:travel/view/user/home/detail_booking_page.dart';
 
-class BookingDetailScreen extends StatelessWidget {
+class BookingDetailPage extends StatelessWidget {
   final String placeName;
   final String aboutTrip;
   final String location;
@@ -14,8 +14,8 @@ class BookingDetailScreen extends StatelessWidget {
   final String tripId;
   final bool isAdmin;
 
-  const BookingDetailScreen({
-    Key? key,
+  const BookingDetailPage({
+    super.key,
     required this.placeName,
     required this.aboutTrip,
     required this.location,
@@ -24,7 +24,7 @@ class BookingDetailScreen extends StatelessWidget {
     required this.transportation,
     required this.tripId,
     required this.isAdmin,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class BookingDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Booking',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
@@ -103,7 +103,7 @@ class BookingDetailScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       placeName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -118,27 +118,27 @@ class BookingDetailScreen extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'About',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       travelDetailsText(
                         value: aboutTrip,
-                        color: Color.fromARGB(255, 7, 7, 7),
+                        color: const Color.fromARGB(255, 7, 7, 7),
                         fontsize: 15,
                         fontWeight: FontWeight.normal,
                       ),
-                      SizedBox(height: 40),
-                      Divider(color: Colors.grey),
-                      SizedBox(height: 30),
-                      Text(
+                      const SizedBox(height: 40),
+                      const Divider(color: Colors.grey),
+                      const SizedBox(height: 30),
+                      const Text(
                         'What is included',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
                           ElevatedButton.icon(
@@ -152,10 +152,10 @@ class BookingDetailScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(0),
                               ),
                             ),
-                            icon: Icon(Icons.train, color: Colors.black),
+                            icon: const Icon(Icons.train, color: Colors.black),
                             label: travelDetailsText(
                               value: '$transportation\nTransportation',
-                              color: Color.fromARGB(255, 7, 7, 7),
+                              color: const Color.fromARGB(255, 7, 7, 7),
                               fontsize: 12,
                               fontWeight: FontWeight.bold,
                             ),
@@ -172,41 +172,42 @@ class BookingDetailScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(0),
                               ),
                             ),
-                            icon: Icon(Icons.punch_clock, color: Colors.black),
+                            icon: const Icon(Icons.punch_clock,
+                                color: Colors.black),
                             label: travelDetailsText(
                               value: '$duration\nDuration',
-                              color: Color.fromARGB(255, 7, 7, 7),
+                              color: const Color.fromARGB(255, 7, 7, 7),
                               fontsize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 50),
+                          const SizedBox(width: 50),
                         ],
                       ),
-                      SizedBox(height: 40),
-                      Divider(color: Colors.grey),
-                      SizedBox(height: 40),
-                      Text(
+                      const SizedBox(height: 40),
+                      const Divider(color: Colors.grey),
+                      const SizedBox(height: 40),
+                      const Text(
                         'Where will you stay',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         placeName,
-                        style: TextStyle(color: Colors.grey),
+                        style: const TextStyle(color: Colors.grey),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Image.asset(
                         'assets/download.jpg', // Placeholder for the map image
                         fit: BoxFit.cover,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         location,
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           Expanded(
@@ -218,7 +219,7 @@ class BookingDetailScreen extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                             // child: Image(image: image),
 
@@ -229,7 +230,7 @@ class BookingDetailScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.only(right: 170),
@@ -244,20 +245,20 @@ class BookingDetailScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            child: Text(
+                            child: const Text(
                               'See all photos',
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      ReviewSection(),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
+                      const ReviewSection(),
+                      const SizedBox(height: 20),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               //'\$600/Person',
                               '₹600 Amount',
                               style: TextStyle(
@@ -273,14 +274,15 @@ class BookingDetailScreen extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => DetailBooking()
+                                          builder: (context) =>
+                                              const DetailBooking()
                                           //DatePage(),
                                           ),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.blue,
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                       horizontal: 40,
                                       vertical: 20,
                                     ),
@@ -288,7 +290,7 @@ class BookingDetailScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'Book Now',
                                     style: TextStyle(color: Colors.white),
                                   ),

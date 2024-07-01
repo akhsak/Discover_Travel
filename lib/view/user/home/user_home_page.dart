@@ -335,8 +335,7 @@ class _UserHomepageState extends State<UserHomepage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            BookingDetailScreen(
+                                        builder: (context) => BookingDetailPage(
                                           isAdmin: false,
                                           tripId: trip.id ?? 'unknown id',
                                           placeName:
@@ -378,7 +377,7 @@ class _UserHomepageState extends State<UserHomepage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => BookingDetailScreen(
+                                      builder: (context) => BookingDetailPage(
                                         isAdmin: false,
                                         tripId: trip.id.toString(),
                                         placeName: trip.placeName.toString(),
@@ -423,7 +422,7 @@ class _UserHomepageState extends State<UserHomepage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BookingDetailScreen(
+                                builder: (context) => BookingDetailPage(
                                   isAdmin: false,
                                   tripId: 'aa',
                                   placeName: 'Beautiful Beach',

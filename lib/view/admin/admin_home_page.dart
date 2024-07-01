@@ -118,7 +118,7 @@ class AdminHomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BookingDetailScreen(
+                          builder: (context) => BookingDetailPage(
                             isAdmin: true,
                             tripId: trips.id ?? 'unknown id',
                             placeName: trips.placeName ?? 'Unknown Place',

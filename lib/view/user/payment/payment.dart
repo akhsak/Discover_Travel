@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:travel/main.dart';
+import 'package:travel/view/user/booking/my_booking.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -57,6 +58,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
       'Your payment was successful.',
       platformChannelSpecifics,
       payload: 'item x',
+    );
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const MyBooking()),
+      (Route<dynamic> route) => false,
     );
   }
 

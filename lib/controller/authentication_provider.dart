@@ -25,6 +25,7 @@ class LoginProvider extends ChangeNotifier {
   TextEditingController loginPasswordController = TextEditingController();
   TextEditingController createAgeController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final fillAccountFormkey = GlobalKey<FormState>();
 
   final createFormKey = GlobalKey<FormState>();
 
@@ -169,6 +170,27 @@ class LoginProvider extends ChangeNotifier {
       log(currentUser!.email!);
     }
     notifyListeners();
+  }
+
+  // updateUser(userid, UserModel data) async {
+  //   await authService.updateUser(data);
+  //   clearSignupControllers();
+  //   notifyListeners();
+  // }
+  Future<void> updateUserProfile(String fullName, String age,
+      String countryCode, String phoneNumber, String email) async {
+    if (currentUser != null) {
+      currentUser!.userName = fullName;
+      currentUser!.age = age;
+      // currentUser!.countryCode = countryCode;
+      currentUser!.phoneNumber = phoneNumber;
+      currentUser!.email = email;
+
+      // Update the user profile in your backend/database
+      await authService.updateUser(currentUser!);
+
+      notifyListeners();
+    }
   }
 
   Future<void> getOtp(phoneCon) async {

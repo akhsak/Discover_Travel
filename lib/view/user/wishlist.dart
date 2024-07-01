@@ -47,7 +47,7 @@ class WishList extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BookingDetailScreen(
+                          builder: (context) => BookingDetailPage(
                             placeName: item.placeName!,
                             aboutTrip: item.aboutTrip!,
                             location: item.location!,

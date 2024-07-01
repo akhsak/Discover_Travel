@@ -1,33 +1,45 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:travel/controller/authentication_provider.dart'; // Adjust import as per your project structure
 
-class EditProfile extends StatelessWidget {
-  EditProfile({super.key});
+class EditProfile extends StatefulWidget {
+  const EditProfile({Key? key}) : super(key: key);
 
+  @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
   final formKey = GlobalKey<FormState>();
 
-  bool obscureText = true;
-
   final fullNameController = TextEditingController();
-
   final ageController = TextEditingController();
-
-  final countryCodeController = TextEditingController();
-
+  final countryCodeController = TextEditingController(text: '+91');
   final phoneController = TextEditingController();
-
   final emailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+    final currentUser = loginProvider.currentUser;
+
+    if (currentUser != null) {
+      fullNameController.text = currentUser.userName ?? '';
+      ageController.text = currentUser.age ?? '';
+      // countryCodeController.text = currentUser.countryCode ?? '';
+      phoneController.text = currentUser.phoneNumber ?? '';
+      emailController.text = currentUser.email ?? '';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double circleAvatarRadius =
-        size.shortestSide * 0.20; // Adjust the radius as needed
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,18 +50,9 @@ class EditProfile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: CircleAvatar(
-                    radius: circleAvatarRadius,
-                    backgroundColor: const Color.fromARGB(255, 143, 189, 198),
-                    backgroundImage: const AssetImage(
-                        'assets/profile_avatar.jpg'), // Replace with the path to your profile image
-                  ),
-                ),
-                SizedBox(height: 10),
                 TextFormField(
                   controller: fullNameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Full name',
                     border: OutlineInputBorder(),
                   ),
@@ -60,29 +63,25 @@ class EditProfile extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 60,
                       child: TextFormField(
                         controller: countryCodeController,
-                        decoration: InputDecoration(
-                          prefixText: '+91',
+                        decoration: const InputDecoration(
+                          prefixText: '+',
                           border: OutlineInputBorder(),
                         ),
                         keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                        readOnly: true, // Make it read-only to prevent editing
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: TextFormField(
                         controller: phoneController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Phone',
                           border: OutlineInputBorder(),
                         ),
@@ -97,10 +96,10 @@ class EditProfile extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: ageController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Age',
                     border: OutlineInputBorder(),
                   ),
@@ -111,10 +110,10 @@ class EditProfile extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(),
                   ),
@@ -128,27 +127,62 @@ class EditProfile extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
-                        // Handle account creation logic
+                        final loginProvider =
+                            Provider.of<LoginProvider>(context, listen: false);
+                        loginProvider.updateUserProfile(
+                          fullNameController.text,
+                          ageController.text,
+                          countryCodeController.text,
+                          phoneController.text,
+                          emailController.text,
+                        );
+                        Navigator.pop(context); // Go back to MyProfile screen
                       }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 150, vertical: 20),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 150, vertical: 20),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Update',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
+
+                  // child: ElevatedButton(
+                  //   onPressed: () {
+                  //     if (formKey.currentState?.validate() ?? false) {
+                  //       final loginProvider =
+                  //           Provider.of<LoginProvider>(context, listen: false);
+                  //       loginProvider.updateUser(
+                  //         fullNameController.text,
+                  //         ageController.text,
+                  //       );
+                  //       Navigator.pop(context); // Go back to MyProfile screen
+                  //     }
+                  //   },
+                  //   style: ElevatedButton.styleFrom(
+                  //     backgroundColor: Colors.blue,
+                  //     padding: const EdgeInsets.symmetric(
+                  //         horizontal: 150, vertical: 20),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(16),
+                  //     ),
+                  //   ),
+                  //   child: const Text(
+                  //     'Update',
+                  //     style: TextStyle(color: Colors.white),
+                  //   ),
+                  // ),
                 ),
               ],
             ),

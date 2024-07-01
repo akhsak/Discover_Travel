@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +31,7 @@ Widget profileScreenContainer(context,
             suffixIcon: true,
             icon: Icons.book_sharp, onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => TermsCondition()));
+              MaterialPageRoute(builder: (context) => const TermsCondition()));
         }
             //  icon: EneftyIcons.info_circle_outline,
             //iconColor: const Color(0xFF1995AD)
@@ -43,8 +42,10 @@ Widget profileScreenContainer(context,
                 title: 'Privacy policy',
                 suffixIcon: true,
                 icon: Icons.shield_moon_sharp, onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PrivacyPolicy()));
               }
                 //icon: EneftyIcons.headphone_outline,
                 //iconColor: const Color(0xFF1995AD)
@@ -55,8 +56,8 @@ Widget profileScreenContainer(context,
             icon: Icons.help,
             //icon: EneftyIcons.logout_outline,
             iconColor: Colors.black, onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HelpPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HelpPage()));
         }),
       ],
     ),
@@ -110,7 +111,7 @@ Widget phoneTextFormField(context) {
       controller: authProvider.phoneController,
       onChanged: (value) {},
       keyboardType: TextInputType.phone,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         // prefixIcon: Container(
         //   padding: EdgeInsets.symmetric(horizontal: 12),
         //   child: InkWell(
