@@ -14,7 +14,7 @@ import 'package:travel/widgets/text_style.dart';
 import 'package:travel/widgets/textfield.dart';
 
 class AdminAddpage extends StatelessWidget {
-  AdminAddpage({Key? key}) : super(key: key);
+  const AdminAddpage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class AdminAddpage extends StatelessWidget {
               print('No route to pop');
             }
           },
-          icon: Icon(EneftyIcons.arrow_left_3_outline),
+          icon: const Icon(EneftyIcons.arrow_left_3_outline),
         ),
       ),
       body: Padding(
@@ -51,8 +51,8 @@ class AdminAddpage extends StatelessWidget {
                     data: "Add Location Images",
                     size: 18.0,
                     weight: FontWeight.bold),
-                SizedBox(height: 16),
-                Container(
+                const SizedBox(height: 16),
+                SizedBox(
                   height: 120,
                   child: Consumer<AdminProvider>(
                     builder: (context, value, child) => GestureDetector(
@@ -81,54 +81,54 @@ class AdminAddpage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 CustomTextFormField(
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.place,
                     color: Colors.black,
                   ),
                   labelText: 'Placename',
                   controller: addProvider.placeNameController,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextFormField(
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.padding_outlined,
                     color: Colors.black,
                   ),
                   labelText: 'About',
                   controller: addProvider.aboutController,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextFormField(
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.padding_outlined,
                     color: Colors.black,
                   ),
                   labelText: 'Duration',
                   controller: addProvider.durationController,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextFormField(
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.padding_outlined,
                     color: Colors.black,
                   ),
                   labelText: 'Transportation',
                   controller: addProvider.transportationController,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextFormField(
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.padding_outlined,
                     color: Colors.black,
                   ),
                   labelText: 'Location',
                   controller: addProvider.locationController,
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     width: double.infinity,
                     child: FloatingActionButton.extended(
                       elevation: 0,

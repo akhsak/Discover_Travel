@@ -269,7 +269,7 @@ class BookingPageService {
           .collection("booked")
           .withConverter<AdminModel>(
               fromFirestore: (snapshots, _) =>
-                  AdminModel.fromJson(snapshots.data()!),
+                  AdminModel.fromJson(snapshots.id, snapshots.data()!),
               toFirestore: (booked, _) => booked.toJson());
       await bookedCollection.doc(booked.id).set(booked);
     } catch (e) {
@@ -282,7 +282,7 @@ class BookingPageService {
       final orderCollection =
           bookings.doc(cartId).collection('orders').withConverter<AdminModel>(
                 fromFirestore: (snapshots, _) =>
-                    AdminModel.fromJson(snapshots.data()!),
+                    AdminModel.fromJson(snapshots.id, snapshots.data()!),
                 toFirestore: (order, _) => order.toJson(),
               );
       final snapshot = await orderCollection.get();

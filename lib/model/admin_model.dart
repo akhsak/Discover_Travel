@@ -19,9 +19,9 @@ class AdminModel {
     this.wishList,
   });
 
-  factory AdminModel.fromJson(Map<String, dynamic> json) {
+  factory AdminModel.fromJson(String id, Map<String, dynamic> json) {
     return AdminModel(
-        id: json['id'],
+        id: id,
         image: json['image'],
         // (json['image'] as List<dynamic>?)
         //     ?.map((item) => item as String)

@@ -6,14 +6,14 @@ import 'package:travel/model/admin_model.dart';
 import 'package:travel/view/user/home/booking_details_page.dart';
 
 class WishList extends StatelessWidget {
-  WishList({Key? key}) : super(key: key);
+  const WishList({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: const Text(''),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,17 +31,17 @@ class WishList extends StatelessWidget {
           Expanded(
             child: Consumer<AdminProvider>(builder: (context, value, child) {
               final wishlistItems = checkUser(value);
-
+              final allbok = value.allTravelList;
               if (wishlistItems.isEmpty) {
-                return Center(
+                return const Center(
                   child: Text('No items in your wishlist.'),
                 );
               }
 
               return ListView.builder(
-                itemCount: wishlistItems.length,
+                itemCount: allbok.length,
                 itemBuilder: (context, index) {
-                  final item = wishlistItems[index];
+                  final item = allbok[index];
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -88,7 +88,7 @@ class WishList extends StatelessWidget {
                                 children: [
                                   Text(
                                     item.placeName ?? 'Unknown',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -96,14 +96,14 @@ class WishList extends StatelessWidget {
                                   SizedBox(height: size.height * 0.01),
                                   Text(
                                     item.location ?? 'Unknown location',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,
                                     ),
                                   ),
                                   SizedBox(height: size.height * 0.01),
                                   RichText(
-                                    text: TextSpan(
+                                    text: const TextSpan(
                                       children: [
                                         TextSpan(
                                           text: 'From \$25',
@@ -142,7 +142,7 @@ class WishList extends StatelessWidget {
                                       ),
                                       child: Text(
                                         item.duration ?? 'Unknown duration',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 13,
                                           color:
                                               Color.fromARGB(255, 54, 52, 52),

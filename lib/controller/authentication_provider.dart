@@ -250,4 +250,14 @@ class LoginProvider extends ChangeNotifier {
       snackBarWidget.showErrorSnackbar(context, message!);
     }
   }
+
+  Future<UserModel?> getUserById(String userId) async {
+    try {
+      UserModel? user = await authService.getUserById(userId);
+      return user;
+    } catch (e) {
+      log('Error fetching user by ID in AuthenticationProvider: $e');
+      return null;
+    }
+  }
 }

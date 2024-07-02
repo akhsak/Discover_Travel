@@ -23,7 +23,7 @@ class BookingProvider extends ChangeNotifier {
 
   final appointmentFormKey = GlobalKey<FormState>();
 
-  List<BookingModel> allAppointmentList = [];
+  List<BookingModel> allBookingList = [];
   bool isLoading = false;
 
   String? selectedDate;
@@ -74,7 +74,7 @@ class BookingProvider extends ChangeNotifier {
 
   Future<void> getAllBooking() async {
     setLoading(true);
-    allAppointmentList = await bookingService.getAllBooking();
+    allBookingList = await bookingService.getAllBooking();
     setLoading(false);
   }
 
@@ -101,7 +101,7 @@ class BookingProvider extends ChangeNotifier {
     setLoading(true);
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;
-      allAppointmentList = await bookingService.getUserBooking(userId);
+      allBookingList = await bookingService.getUserBooking(userId);
       setLoading(false);
     } catch (error) {
       setLoading(false);

@@ -19,7 +19,7 @@ class TravelService {
     travel = firebaseFirestore
         .collection(travelPackages)
         .withConverter<AdminModel>(fromFirestore: (snapshot, options) {
-      return AdminModel.fromJson(snapshot.data()!);
+      return AdminModel.fromJson(snapshot.id, snapshot.data()!);
     }, toFirestore: (value, options) {
       return value.toJson();
     });
@@ -27,7 +27,9 @@ class TravelService {
 
   Future<void> addTravelPackage(AdminModel data) async {
     try {
-      await travel.add(data);
+      DocumentReference docref = await travel.add(data);
+      data.id = docref.id;
+      await docref.set(data);
     } catch (e) {
       log('Error while adding travel :$e');
     }
