@@ -323,7 +323,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MyBooking()),
+        MaterialPageRoute(builder: (context) => MyBooking()),
       );
     } else {
       log('No items in the booking list');

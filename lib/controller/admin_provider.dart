@@ -158,4 +158,13 @@ class AdminProvider extends ChangeNotifier {
   Future<void> updateCart({id}) async {
     await bookingPageService.updateIsOrder(id);
   }
+
+  // Future<AdminModel?> getTravelPackageById(String id) async {
+  //   try {
+  //     return await travelService.getTravelPackageById(id);
+  //   } catch (e) {
+  //     log('Error fetching travel package by id: $e');
+  //     return null;
+  //   }
+  // }
 }

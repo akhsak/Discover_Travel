@@ -1,5 +1,3 @@
-import 'package:travel/model/admin_model.dart';
-
 class BookingModel {
   String? id;
   String? uId;
