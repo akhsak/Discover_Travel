@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:developer';
+
 import 'package:country_picker/country_picker.dart';
 
 import 'package:flutter/material.dart';
@@ -108,7 +110,7 @@ class CreateAccount extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
-                        controller: createprovider.phoneController,
+                        controller: createprovider.createAgeController,
                         decoration: const InputDecoration(
                           labelText: 'Phone',
                           border: OutlineInputBorder(),
@@ -129,7 +131,7 @@ class CreateAccount extends StatelessWidget {
                 TextFormField(
                   keyboardType: TextInputType.number,
                   maxLength: 2,
-                  controller: createprovider.createAgeController,
+                  controller: createprovider.phoneController,
                   decoration: const InputDecoration(
                     labelText: 'Age',
                     border: OutlineInputBorder(),
