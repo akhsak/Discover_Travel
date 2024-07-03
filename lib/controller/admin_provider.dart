@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -167,4 +168,14 @@ class AdminProvider extends ChangeNotifier {
   //     return null;
   //   }
   // }
+  Future<AdminModel?> getAdminDataById(String id) async {
+    try {
+      final DocumentSnapshot<AdminModel> snapshot =
+          await travelService.travel.doc(id).get();
+      return snapshot.data();
+    } catch (e) {
+      log('Error fetching admin data by id: $e');
+      return null;
+    }
+  }
 }

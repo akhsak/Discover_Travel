@@ -177,15 +177,20 @@ class LoginProvider extends ChangeNotifier {
   //   clearSignupControllers();
   //   notifyListeners();
   // }
-  Future<void> updateUserProfile(String fullName, String age,
-      String countryCode, String phoneNumber, String email) async {
+  Future<void> updateUserProfile(
+      String fullName,
+      String age,
+      String countryCode,
+      String phoneNumber,
+      String email,
+      String profilepic) async {
     if (currentUser != null) {
       currentUser!.userName = fullName;
       currentUser!.age = age;
       // currentUser!.countryCode = countryCode;
       currentUser!.phoneNumber = phoneNumber;
       currentUser!.email = email;
-
+      currentUser!.profilepic = profilepic;
       // Update the user profile in your backend/database
       await authService.updateUser(currentUser!);
 
