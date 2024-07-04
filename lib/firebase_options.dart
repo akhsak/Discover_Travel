@@ -44,39 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCdocV97zunErGvM4DEQcWrbZu66vTZk-A',
-    appId: '1:110756258317:web:74167f6509c0d536a22b44',
-    messagingSenderId: '110756258317',
-    projectId: 'discover-86019',
-    authDomain: 'discover-86019.firebaseapp.com',
-    storageBucket: 'discover-86019.appspot.com',
+    apiKey: 'AIzaSyCiyRdeZilNtXC5yvSSok3XIci6gupyhFk',
+    appId: '1:650287500996:web:75bc16a05522f402280391',
+    messagingSenderId: '650287500996',
+    projectId: 'test-230e1',
+    authDomain: 'test-230e1.firebaseapp.com',
+    storageBucket: 'test-230e1.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBWfEuiPqfXZoVJB_z3UChKeyqK_ou6SMc',
-    appId: '1:110756258317:android:9d5095d34fd3602ea22b44',
-    messagingSenderId: '110756258317',
-    projectId: 'discover-86019',
-    storageBucket: 'discover-86019.appspot.com',
+    apiKey: 'AIzaSyBAOUqFZLmp0Tz9k-Yb8Z1Uigvn7JYkCfs',
+    appId: '1:650287500996:android:8d6068653c0169a5280391',
+    messagingSenderId: '650287500996',
+    projectId: 'test-230e1',
+    storageBucket: 'test-230e1.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDyo-zbEFzmcD-FqBuTQx-q2feYsWFd0zs',
-    appId: '1:110756258317:ios:60679d4c14b9dad6a22b44',
-    messagingSenderId: '110756258317',
-    projectId: 'discover-86019',
-    storageBucket: 'discover-86019.appspot.com',
-    iosClientId: '110756258317-7p1586ea3k28f6ch4jfejj4q3po4vd7b.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBM_kJVAog5QNkBdHS4kz3chDwfMzMHpyY',
+    appId: '1:650287500996:ios:d8ea5317cfecfcae280391',
+    messagingSenderId: '650287500996',
+    projectId: 'test-230e1',
+    storageBucket: 'test-230e1.appspot.com',
+    iosClientId: '650287500996-o1d129hr9buromt1l2ul98s6g7gn9maj.apps.googleusercontent.com',
     iosBundleId: 'com.example.travel',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDyo-zbEFzmcD-FqBuTQx-q2feYsWFd0zs',
-    appId: '1:110756258317:ios:8a450cd5ad86fa3aa22b44',
-    messagingSenderId: '110756258317',
-    projectId: 'discover-86019',
-    storageBucket: 'discover-86019.appspot.com',
-    iosClientId: '110756258317-57adcqvmoiqv6tun4nrroff1eeebk0gr.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBM_kJVAog5QNkBdHS4kz3chDwfMzMHpyY',
+    appId: '1:650287500996:ios:f6f410520e23e4cc280391',
+    messagingSenderId: '650287500996',
+    projectId: 'test-230e1',
+    storageBucket: 'test-230e1.appspot.com',
+    iosClientId: '650287500996-71dua6tvem16dg95fplmv96lqmtftmma.apps.googleusercontent.com',
     iosBundleId: 'com.example.travel.RunnerTests',
   );
 }

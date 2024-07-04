@@ -31,7 +31,6 @@ class WishList extends StatelessWidget {
           Expanded(
             child: Consumer<AdminProvider>(builder: (context, value, child) {
               final wishlistItems = checkUser(value);
-              final allbok = value.allTravelList;
               if (wishlistItems.isEmpty) {
                 return const Center(
                   child: Text('No items in your wishlist.'),
@@ -39,9 +38,9 @@ class WishList extends StatelessWidget {
               }
 
               return ListView.builder(
-                itemCount: allbok.length,
+                itemCount: wishlistItems.length,
                 itemBuilder: (context, index) {
-                  final item = allbok[index];
+                  final item = wishlistItems[index];
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(

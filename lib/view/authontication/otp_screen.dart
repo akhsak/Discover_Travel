@@ -51,20 +51,22 @@ class OtpScreen extends StatelessWidget {
                         onPressed: () async {
                       if (formKey.currentState!.validate()) {
                         try {
-                          PhoneAuthCredential credential =
-                              PhoneAuthProvider.credential(
-                                  verificationId: verificationId,
-                                  smsCode:
-                                      authProvider.otpController.text.trim());
-                          await FirebaseAuth.instance
-                              .signInWithCredential(credential);
-                          authProvider.clearOtpController();
+                          authProvider.verifyOtp(
+                              authProvider.otpController.text, context);
+                          // PhoneAuthCredential credential =
+                          //     PhoneAuthProvider.credential(
+                          //         verificationId: verificationId,
+                          //         smsCode:
+                          //             authProvider.otpController.text.trim());
+                          // await FirebaseAuth.instance
+                          //     .signInWithCredential(credential);
+                          // authProvider.clearOtpController();
 
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UserBottomScreen()),
-                              (route) => false);
+                          // Navigator.pushAndRemoveUntil(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => UserBottomScreen()),
+                          //     (route) => false);
                         } catch (e) {
                           log('Error during OTP verification: $e');
                           SnackBarWidget()

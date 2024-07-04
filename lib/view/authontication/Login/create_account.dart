@@ -110,7 +110,7 @@ class CreateAccount extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
-                        controller: createprovider.createAgeController,
+                        controller: createprovider.phoneController,
                         decoration: const InputDecoration(
                           labelText: 'Phone',
                           border: OutlineInputBorder(),
@@ -131,7 +131,7 @@ class CreateAccount extends StatelessWidget {
                 TextFormField(
                   keyboardType: TextInputType.number,
                   maxLength: 2,
-                  controller: createprovider.phoneController,
+                  controller: createprovider.createAgeController,
                   decoration: const InputDecoration(
                     labelText: 'Age',
                     border: OutlineInputBorder(),
@@ -202,8 +202,8 @@ class CreateAccount extends StatelessWidget {
                             await createprovider.signupUser(
                                 createprovider.createEmailController.text,
                                 createprovider.createPasswordController.text,
-                                createprovider.phoneController.text,
                                 createprovider.createAgeController.text,
+                                createprovider.phoneController.text,
                                 createprovider.userNameController.text);
 
                             Navigator.pushReplacement(

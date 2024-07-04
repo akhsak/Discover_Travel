@@ -108,7 +108,7 @@ Widget phoneTextFormField(context) {
         }
       },
       // maxLength: 10,
-      controller: authProvider.phoneController,
+      controller: authProvider.createAgeController,
       onChanged: (value) {},
       keyboardType: TextInputType.phone,
       decoration: const InputDecoration(

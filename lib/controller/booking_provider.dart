@@ -123,4 +123,9 @@ class BookingProvider extends ChangeNotifier {
       throw error;
     }
   }
+
+  void deleteBook(booking) {
+    allBookingList.remove(booking);
+    notifyListeners();
+  }
 }

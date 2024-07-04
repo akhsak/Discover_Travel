@@ -19,11 +19,11 @@ class LoginProvider extends ChangeNotifier {
   final createEmailController = TextEditingController();
   final createPasswordController = TextEditingController();
   TextEditingController otpController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController createAgeController = TextEditingController();
 
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
-  TextEditingController createAgeController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final fillAccountFormkey = GlobalKey<FormState>();
 
@@ -69,7 +69,7 @@ class LoginProvider extends ChangeNotifier {
   }
 
   void clearPhoneController() {
-    phoneController.clear();
+    createAgeController.clear();
   }
 
   void clearOtpController() {
@@ -80,8 +80,8 @@ class LoginProvider extends ChangeNotifier {
     userNameController.clear();
     createEmailController.clear();
     createPasswordController.clear();
-    createAgeController.clear();
     phoneController.clear();
+    createAgeController.clear();
   }
 
   void clearLoginControllers() {
@@ -157,7 +157,7 @@ class LoginProvider extends ChangeNotifier {
     final user = UserModel(
       email: createEmailController.text,
       userName: userNameController.text,
-      phoneNumber: phoneController.text,
+      phoneNumber: createAgeController.text,
       uId: firebaseAuth.currentUser!.uid,
     );
     await authService.addUser(user);
@@ -222,8 +222,8 @@ class LoginProvider extends ChangeNotifier {
     userNameController.clear();
     loginEmailController.clear();
     loginPasswordController.clear();
-    createAgeController.clear();
     phoneController.clear();
+    createAgeController.clear();
     otpController.clear();
     notifyListeners();
   }
