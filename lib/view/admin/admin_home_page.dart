@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel/controller/admin_provider.dart';
 import 'package:travel/controller/authentication_provider.dart';
+import 'package:travel/view/admin/chat_list.dart';
 import 'package:travel/view/authontication/Login/login_page.dart';
 import 'package:travel/view/user/home/booking_details_page.dart';
 import 'package:travel/widgets/expanded_trip_card.dart';
@@ -21,6 +22,12 @@ class AdminHomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ChatList()));
+            },
+            icon: Icon(Icons.message)),
         backgroundColor: const Color(0xFFF5F5F5),
         toolbarHeight: 100,
         title: Padding(
@@ -137,6 +144,9 @@ class AdminHomeScreen extends StatelessWidget {
                       children: [
                         expandedTripCard(context, trip: trips),
                         SizedBox(height: size.height * .02),
+                        // Container(
+                        //   color: Colors.amber,
+                        // ),
                       ],
                     ),
                   );

@@ -6,6 +6,7 @@ import 'package:travel/controller/admin_provider.dart';
 import 'package:travel/controller/authentication_provider.dart';
 import 'package:travel/controller/booking_provider.dart';
 import 'package:travel/controller/bottom.dart';
+import 'package:travel/controller/chat_provider.dart';
 import 'package:travel/controller/notification_provider.dart';
 import 'package:travel/controller/revie_controller.dart';
 import 'package:travel/firebase_options.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ReviewState()),
         ChangeNotifierProvider(create: (context) => BookingProvider()),
         ChangeNotifierProvider(create: (context) => NotificationProvider()),
+        ChangeNotifierProvider(create: (context) => ChatProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

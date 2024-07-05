@@ -160,22 +160,21 @@ class AdminProvider extends ChangeNotifier {
     await bookingPageService.updateIsOrder(id);
   }
 
-  // Future<AdminModel?> getTravelPackageById(String id) async {
-  //   try {
-  //     return await travelService.getTravelPackageById(id);
-  //   } catch (e) {
-  //     log('Error fetching travel package by id: $e');
-  //     return null;
-  //   }
-  // }
-  Future<AdminModel?> getAdminDataById(String id) async {
+  Future<AdminModel?> getTravelPackageById(String id) async {
     try {
-      final DocumentSnapshot<AdminModel> snapshot =
-          await travelService.travel.doc(id).get();
-      return snapshot.data();
+      return await travelService.getTravelPackageById(id);
     } catch (e) {
-      log('Error fetching admin data by id: $e');
+      log('Error fetching travel package by id: $e');
       return null;
     }
   }
+  // Future<AdminModel?> getAdminDataById(String id) async {
+  //   try {
+  //     final DocumentSnapshot<AdminModel> snapshot =
+  //         await travelService.travel.doc(id).get();
+  //     return snapshot.data();
+  //   } catch (e) {
+  //     log('Error fetching admin data by id: $e');
+  //     return null;
+  //   }
 }

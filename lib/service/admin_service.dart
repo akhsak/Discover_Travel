@@ -120,13 +120,13 @@ class TravelService {
     return null;
   }
 
-  // Future<AdminModel?> getTravelPackageById(String id) async {
-  //   try {
-  //     final DocumentSnapshot<AdminModel> snapshot = await travel.doc(id).get();
-  //     return snapshot.data();
-  //   } catch (e) {
-  //     log('Error fetching travel package: $e');
-  //     return null;
-  //   }
-  // }
+  Future<AdminModel?> getTravelPackageById(String id) async {
+    try {
+      final DocumentSnapshot<AdminModel> snapshot = await travel.doc(id).get();
+      return snapshot.data();
+    } catch (e) {
+      log('Error fetching travel package: $e');
+      return null;
+    }
+  }
 }

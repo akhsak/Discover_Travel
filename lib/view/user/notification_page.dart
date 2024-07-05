@@ -37,7 +37,7 @@ class NotificationPage extends StatelessWidget {
                         (notification) => notification.recieverId == user!.uid)
                     .toList();
                 if (notifications.isEmpty) {
-                  return Center(
+                  return const Center(
                       child: Text(
                     'No Notification Found',
                     style: TextStyle(fontSize: 20, color: Colors.blue),
@@ -86,12 +86,34 @@ class NotificationPage extends StatelessWidget {
                             height: 33,
                             child: ElevatedButton(
                               onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                          title: const Text('Confirm Delete'),
+                                          content: const Text(
+                                              'Are you sure you want to delete this notification?'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                notificationProvider
+                                                    .deleteNotification(
+                                                        notification.id);
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text('Delete'),
+                                            ),
+                                          ],
+                                        ));
+                                // notificationProvider
+                                //     .deleteNotification(notification.id);
                                 // Handle view notification action
                               },
-                              child: const Text(
-                                'View',
-                                style: TextStyle(color: Colors.white),
-                              ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
                                 padding: const EdgeInsets.symmetric(
@@ -100,6 +122,10 @@ class NotificationPage extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
+                              ),
+                              child: const Text(
+                                'Delete',
+                                style: TextStyle(color: Colors.white),
                               ),
                             ),
                           ),
