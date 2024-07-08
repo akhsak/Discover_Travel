@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel/controller/admin_provider.dart';
@@ -22,12 +23,6 @@ class AdminHomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ChatList()));
-            },
-            icon: Icon(Icons.message)),
         backgroundColor: const Color(0xFFF5F5F5),
         toolbarHeight: 100,
         title: Padding(
@@ -155,6 +150,14 @@ class AdminHomeScreen extends StatelessWidget {
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ChatList()));
+        },
+        child: const Icon(Icons.message),
+        backgroundColor: Colors.white,
       ),
     );
   }

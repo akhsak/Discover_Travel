@@ -41,16 +41,16 @@ class _UserChatScreenState extends State<UserChatScreen> {
                 },
                 icon: const Icon(Icons.arrow_back_ios)),
             const CircleAvatar(
-              radius: 22,
-              backgroundImage: AssetImage('assets/logo.png'),
+              radius: 20,
+              backgroundImage: AssetImage('assets/icon_color.png'),
             ),
             SizedBox(
               width: size.width * .025,
             ),
             Text(
-              'Rexparts',
+              'Discover',
               style: TextStyle(
-                color: const Color(0xFF1995AD),
+                color: Colors.blue,
                 fontSize: 20,
               ),
             )
@@ -66,7 +66,9 @@ class _UserChatScreenState extends State<UserChatScreen> {
                     ? Center(
                         child: Text(
                           'Start a conversation..',
-                          style: TextStyle(color: const Color(0xFF1995AD)),
+                          style: TextStyle(
+                            color: Colors.blue,
+                          ),
                         ),
                       )
                     : ListView.builder(

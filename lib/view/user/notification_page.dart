@@ -22,10 +22,10 @@ class NotificationPage extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Today',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            // const Text(
+            //   'Today',
+            //   style: TextStyle(fontWeight: FontWeight.bold),
+            // ),
             Expanded(
               child: Consumer<NotificationProvider>(
                   builder: (context, provider, child) {
