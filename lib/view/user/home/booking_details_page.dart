@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:travel/controller/admin_provider.dart';
 import 'package:travel/model/admin_model.dart';
@@ -13,11 +14,11 @@ class BookingDetailPage extends StatelessWidget {
   final String? location;
   final ImageProvider? image;
   final String? duration;
-  final String? transportation;
-  final String? tripId;
+  final transportation;
+  String? tripId;
   final bool? isAdmin;
 
-  const BookingDetailPage({
+  BookingDetailPage({
     super.key,
     this.allbooking,
     this.placeName,
@@ -279,7 +280,7 @@ class BookingDetailPage extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const DetailBooking()
+                                              DetailBooking(tripId: tripId)
                                           //DatePage(),
                                           ),
                                     );

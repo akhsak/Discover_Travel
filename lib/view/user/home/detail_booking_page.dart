@@ -11,7 +11,8 @@ import 'package:travel/widgets/textfield.dart';
 import 'package:country_picker/country_picker.dart';
 
 class DetailBooking extends StatelessWidget {
-  const DetailBooking({super.key});
+  final tripId;
+  const DetailBooking({super.key, this.tripId});
 
   @override
   Widget build(BuildContext context) {
@@ -256,6 +257,7 @@ class DetailBooking extends StatelessWidget {
                               // phoneNumber:
                               //     detailBookProvider.phoneController.text,
                               // email: detailBookProvider.emailController.text,
+                              idd: tripId,
                               travelId:
                                   detailBookProvider.idNumberController.text,
                               date: detailBookProvider.selectedDate ?? '',
@@ -276,6 +278,7 @@ class DetailBooking extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => ConfirmPayment(
                                     bookingData: bookingModel,
+                                    tripId: tripId,
                                   ),
                                 ),
                               );

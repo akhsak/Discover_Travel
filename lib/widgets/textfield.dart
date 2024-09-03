@@ -5,7 +5,6 @@ import 'package:travel/controller/booking_provider.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String? labelText;
-
   final bool? obscureText;
   final TextEditingController controller;
   final OutlineInputBorder? enabledBorder;
@@ -80,7 +79,7 @@ poppinsHeadText({text, textAlign, double? fontSize, color}) {
       style: GoogleFonts.poppins(
           color: color ?? const Color(0xFF101828),
           fontWeight: FontWeight.w600,
-          fontSize: fontSize ?? 16));
+          fontSize: fontSize ?? 13));
 }
 
 poppinsSmallText({text, color, fontWeight, textAlign}) {

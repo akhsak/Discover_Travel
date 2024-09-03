@@ -44,38 +44,6 @@ class AuthService {
     return null;
   }
 
-  // Future<UserCredential> signUpWithEmail(
-  //     {required String email,
-  //     required String password,
-  //     userName,
-  //     phoneNumber,
-  //     age}) async {
-  //   try {
-  //     UserCredential userCredential =
-  //         await firebaseAuth.createUserWithEmailAndPassword(
-  //       email: email,
-  //       password: password,
-  //       userName,
-  //       phoneNumber,
-  //       age,
-  //     );
-  //     UserModel userData = UserModel(
-  //         email: email,
-  //         uId: userCredential.user?.uid,
-  //         userName: userName,
-  //         phoneNumber: phoneNumber,
-  //         age: Age);
-  //     await firestore
-  //         .collection(collection)
-  //         .doc(userCredential.user?.uid)
-  //         .set(userData.toJson());
-  //     log('Account created');
-  //     return userCredential;
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
   Future<UserCredential> signUpWithEmail({
     required String email,
     required String password,
@@ -245,20 +213,6 @@ class AuthService {
     }
   }
 
-  // Future<List<UserModel>> getAllUsers() async {
-  //   try {
-  //     QuerySnapshot querySnapshot =
-  //         await firestore.collection(collection).get();
-  //     List<UserModel> users = querySnapshot.docs.map((doc) {
-  //       return UserModel.fromJson(doc.data() as Map<String, dynamic>);
-  //     }).toList();
-  //     return users;
-  //   } catch (e) {
-  //     log('Error fetching users: $e');
-  //     return [];
-  //   }
-  // }
-
   Future<List<UserModel>> getAllUsers() async {
     try {
       QuerySnapshot querySnapshot =
@@ -266,13 +220,6 @@ class AuthService {
       List<UserModel> users = querySnapshot.docs.map((doc) {
         return UserModel.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
-
-      // Send notifications to all users
-      // await notificationService.sendNotificationToAllUsers(
-      //   'New Product Added',
-      //   'A new product has been added to the catalog!',
-      //   users,
-      // );
 
       return users;
     } catch (e) {

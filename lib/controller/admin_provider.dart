@@ -29,6 +29,7 @@ class AdminProvider extends ChangeNotifier {
   final TextEditingController placeNameController = TextEditingController();
   final TextEditingController aboutController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
   final TextEditingController durationController = TextEditingController();
   final TextEditingController transportationController =
       TextEditingController();
@@ -49,6 +50,7 @@ class AdminProvider extends ChangeNotifier {
     aboutController.clear();
     locationController.clear();
     durationController.clear();
+    amountController.clear();
     transportationController.clear();
     pickedImage = null;
   }

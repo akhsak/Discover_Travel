@@ -48,7 +48,7 @@ class AdminAddpage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextWidget().text(
-                    data: "Add Location Images",
+                    data: "Add Place Images",
                     size: 18.0,
                     weight: FontWeight.bold),
                 const SizedBox(height: 16),
@@ -90,7 +90,7 @@ class AdminAddpage extends StatelessWidget {
                   labelText: 'Placename',
                   controller: addProvider.placeNameController,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 CustomTextFormField(
                   prefixIcon: const Icon(
                     Icons.padding_outlined,
@@ -99,7 +99,7 @@ class AdminAddpage extends StatelessWidget {
                   labelText: 'About',
                   controller: addProvider.aboutController,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 CustomTextFormField(
                   prefixIcon: const Icon(
                     Icons.padding_outlined,
@@ -108,7 +108,7 @@ class AdminAddpage extends StatelessWidget {
                   labelText: 'Duration',
                   controller: addProvider.durationController,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 CustomTextFormField(
                   prefixIcon: const Icon(
                     Icons.padding_outlined,
@@ -117,7 +117,7 @@ class AdminAddpage extends StatelessWidget {
                   labelText: 'Transportation',
                   controller: addProvider.transportationController,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 CustomTextFormField(
                   prefixIcon: const Icon(
                     Icons.padding_outlined,
@@ -125,6 +125,16 @@ class AdminAddpage extends StatelessWidget {
                   ),
                   labelText: 'Location',
                   controller: addProvider.locationController,
+                ),
+                const SizedBox(height: 10),
+                CustomTextFormField(
+                  prefixIcon: const Icon(
+                    Icons.padding_outlined,
+                    color: Colors.black,
+                  ),
+                  labelText: 'Amount',
+                  keyboardType: TextInputType.number,
+                  controller: addProvider.amountController,
                 ),
                 const SizedBox(height: 24),
                 Center(

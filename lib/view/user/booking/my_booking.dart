@@ -4,10 +4,9 @@ import 'package:travel/controller/admin_provider.dart';
 import 'package:travel/controller/authentication_provider.dart';
 import 'package:travel/controller/booking_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:travel/model/booking_model.dart';
-import 'package:travel/view/user/booking/conform_payment.dart';
-import 'package:travel/model/user_model.dart';
 import 'package:travel/model/admin_model.dart';
+import 'package:travel/model/booking_model.dart';
+import 'package:travel/model/user_model.dart';
 
 class MyBooking extends StatelessWidget {
   const MyBooking({super.key});
@@ -45,8 +44,7 @@ class MyBooking extends StatelessWidget {
                 future: logprovider.getUserById(booking.uId!),
                 builder: (context, userSnapshot) {
                   return FutureBuilder<AdminModel?>(
-                    future: adminProvider.getTravelPackageById(
-                        booking.id!), // Fetch admin data by ID
+                    future: adminProvider.getTravelPackageById(booking.id!),
                     builder: (context, adminSnapshot) {
                       if (userSnapshot.connectionState ==
                               ConnectionState.waiting ||
@@ -75,62 +73,17 @@ class MyBooking extends StatelessWidget {
                           ),
                         );
                       } else {
-                        final adminData = adminSnapshot.data;
-                        // return GestureDetector(
-                        // onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => ConfirmPayment(
-                        //         bookingData: booking,
-                        //       ),
-                        //     ),
-                        //   );
-                        // },
                         return Card(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: size.height * 0.13,
-                                  width: size.width * 0.3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    image: adminData?.image != null
-                                        ? DecorationImage(
-                                            image:
-                                                NetworkImage(adminData!.image!),
-                                            fit: BoxFit.cover,
-                                          )
-                                        : null,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: size.width * 0.05,
-                                ),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        adminData?.placeName ?? 'No Place Name',
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: size.height * 0.01),
-                                      Text(
-                                        adminData?.location ?? 'No Location',
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      SizedBox(height: size.height * 0.01),
                                       Text(
                                         booking.date ?? 'No Date',
                                         style: const TextStyle(
@@ -143,7 +96,7 @@ class MyBooking extends StatelessWidget {
                                         text: const TextSpan(
                                           children: [
                                             TextSpan(
-                                              text: 'Details',
+                                              text: 'Details: ',
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.bold,
@@ -161,7 +114,6 @@ class MyBooking extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(height: size.height * 0.01),
                                     ],
                                   ),
                                 ),
@@ -176,7 +128,6 @@ class MyBooking extends StatelessWidget {
                             ),
                           ),
                         );
-                        //  );
                       }
                     },
                   );

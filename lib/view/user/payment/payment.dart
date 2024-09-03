@@ -11,7 +11,8 @@ import 'package:travel/view/user/booking/my_booking.dart';
 import 'package:travel/widgets/bottombar.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+  final tripId;
+  const PaymentScreen({super.key, this.tripId});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -98,7 +99,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     log('External Wallet: ${response.walletName}');
   }
 
-  void _showConfirmationDialog() {
+  void _showConfirmationDialog({tripId}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -225,7 +226,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 return;
                               }
                               formkey.currentState!.save();
-                              _showConfirmationDialog();
+                              _showConfirmationDialog(tripId: widget.tripId);
                             },
                             style: ElevatedButton.styleFrom(
                               foregroundColor: primaryColor,

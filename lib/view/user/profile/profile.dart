@@ -62,7 +62,9 @@ class UserProfileScreen extends StatelessWidget {
                       ),
                       SizedBox(height: size.height * 0.008),
                       poppinsSmallText(
-                        text: value.currentUser?.email ?? firebaseauth?.email,
+                        text: value.currentUser?.email ??
+                            firebaseauth?.email ??
+                            'no email',
                         color: const Color(0xFF888888),
                       ),
                     ],

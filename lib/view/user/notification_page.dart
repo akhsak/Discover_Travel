@@ -40,7 +40,6 @@ class NotificationPage extends StatelessWidget {
                   return const Center(
                       child: Text(
                     'No Notification Found',
-                    style: TextStyle(fontSize: 20, color: Colors.blue),
                   ));
                 }
                 return ListView.builder(
